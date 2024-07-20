@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nephelometer_Register</title>
+    <link rel="stylesheet" href="../css/register.css">
+
+</head>
+<body>
+    <nav>
+        <div class="nav__bar">
+          <div class="logo nav__logo">
+            <a href="index.html">nephelometer</a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+          <div class="nav__action__btn">
+              <button class="btn">
+                <span><i class="ri-user-line"></i></span> Account
+              </button>
+          </div>
+        </div>
+      </nav>
+
+    <div class="wrapper-p">
+        <div class="wrapper">
+          <span class="icon-close"><i class="fa-solid fa-xmark"></i></span>
+          <div class="form-box login">
+            <h2>Login</h2>
+            <form>
+              <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" required id="email_li">
+                <label>Email</label>
+              </div>
+              <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" required id="pass_li">
+                <label>Password</label>
+              </div>
+              <div class="remember-forgot">
+                <label><input type="checkbox">
+                  Remember me</label>
+                <a href="#">Forgot password ?</a>
+              </div>
+              <button type="submit" class="btn" id="login_btn">Login</button>
+              <div class="login-register">
+                <p>Don't have an account ?<a href="#" class="register-link">Register</a></p>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-box register">
+            <h2>Registration</h2>
+            <form>
+              <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-user"></i></span>
+                <input type="text" required id="username_su">
+                <label>Username</label>
+              </div>
+              <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" required id="email_su">
+                <label>Email</label>
+              </div>
+              <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" required id="pass_su">
+                <label>Password</label>
+              </div>
+              <div class="remember-forgot">
+                <label><input type="checkbox">
+                  I accepted the terms & conditions</label>
+              </div>
+              <button type="submit" class="btn" id="signup_btn">Register</button>
+              <div class="login-register">
+                <p>Already have an account ?<a href="#" class="login-link">Login</a></p>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <script src="../js/register.js"></script>
+</body>
+</html>
