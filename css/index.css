@@ -20,14 +20,14 @@
   bottom: 0;
   right: 0;
   margin-bottom: 30px;
-  margin-right: 60px;
+  margin-right: 50px;
   z-index: 1000;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   align-content: center;
 }
 
-.scrollup__btn:hover {
+.scrollup__btn button:hover {
   color: var(--secondary-color);
 }
 
@@ -349,11 +349,6 @@ nav {
 .feedback {
   background-color: var(--primary-color);
   padding-bottom: 5px;
-}
-
-.form-feedback input {
-  background-color: var(--primary-color);
-  color: var(--primary-color);
 }
 
 .form-feedback label {
