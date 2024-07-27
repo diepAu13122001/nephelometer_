@@ -273,12 +273,13 @@ nav {
 
 .header__socials {
   position: absolute;
-  left: 0;
+  left: 0px;
   align-items: center;
   gap: 1rem;
   color: var(--white);
   transform: translateX(calc(-50% + 1rem)) rotate(90deg);
   display: none;
+  z-index: 1000;
 }
 
 .header__socials a {
