@@ -87,15 +87,16 @@
   align-items: center;
   gap: 10px;
   font-size: 1rem;
-  color: var(--white);
   background-color: transparent;
   border-radius: 5px;
   transition: 0.3s;
   cursor: pointer;
+  color: var(--white);
 }
 
 .btn:hover {
   background-color: rgba(10, 30, 39, 0.5);
+  color: var(--white);
 }
 
 .logo a {
@@ -343,6 +344,40 @@ nav {
 
 .about__content a:hover span {
   transform: translateX(10px);
+}
+
+.feedback {
+  background-color: var(--primary-color);
+  padding-bottom: 5px;
+}
+
+.form-feedback input {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.form-feedback label {
+  color: var(--white);
+}
+
+.form-feedback textarea {
+  background-color: var(--primary-color);
+  color: var(--white);
+  min-height: 75px;
+  max-height: 250px;
+}
+
+.submit_btn {
+  right: 0;
+  border: #cbd5e1 solid 1px;
+  max-width: max-content;
+  border-radius: 5px;
+  position: absolute;
+  align-items: center center;
+}
+
+.submit_btn button:hover {
+  color: var(--secondary-color);
 }
 
 .footer {

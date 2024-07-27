@@ -4,7 +4,10 @@ const menuBtnIcon = menuBtn.querySelector("i");
 
 menuBtn.addEventListener("click", (e) => {
   const isOpen = navLinks.classList.contains("open");
-  menuBtnIcon.setAttribute("class", isOpen ? "ri-menu-line" : "ri-close-line");
+  menuBtnIcon.setAttribute(
+    "class",
+    isOpen ? "fa-solid fa-bars" : "fa-solid fa-xmark"
+  );
   if (isOpen) {
     navLinks.classList.add("close");
     navLinks.addEventListener(
@@ -22,7 +25,7 @@ menuBtn.addEventListener("click", (e) => {
 
 navLinks.addEventListener("click", (e) => {
   navLinks.classList.remove("open");
-  menuBtnIcon.setAttribute("class", "ri-menu-line");
+  menuBtnIcon.setAttribute("class", "fa-solid fa-bars");
 });
 
 const scrollRevealOption = {
@@ -45,7 +48,7 @@ ScrollReveal().reveal(".header__container .scroll__btn", {
 ScrollReveal().reveal(".header__container .header__socials", {
   ...scrollRevealOption,
   origin: "left",
-  delay: 1500,
+  delay: 1000,
 });
 
 ScrollReveal().reveal(".about__image-1, .about__image-3", {
@@ -70,5 +73,5 @@ ScrollReveal().reveal(".about__content p", {
 });
 ScrollReveal().reveal(".about__content .about__btn .rollup_btn", {
   ...scrollRevealOption,
-  delay: 2000,
+  delay: 1500,
 });
