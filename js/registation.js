@@ -1,104 +1,73 @@
-// tao du lieu nguoi dung
-const user_list = [
-  { username: "tienle", email: "tien@gmail.com", pass: "123" },
+const user_List = [
+  {
+    username: "admin",
+    email: "admin@gmail.com",
+    password: "nephelometeradmin",
+  },
 ];
 
-// const wrapper = document.querySelector(".wrapper");
-// hien thi ten nguoi dung hoac chu login khi chua dang nhap
-const username_nav = document.querySelector("#username_nav");
+document
+  .getElementById("registerForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Ngăn chặn form gửi đi
 
-// add du lieu mau vao local storage
-if (!JSON.parse(localStorage.getItem("user_list"))) {
-  localStorage.setItem("user_list", JSON.stringify(user_list));
-}
+    // Lấy giá trị từ các trường nhập liệu
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const terms = document.getElementById("terms").checked;
 
-// kiem tra du lieu nguoi dung
-function signup(e) {
-  // chan luong mac dinh
-  e.preventDefault();
-  const email = document.getElementById("email_su").value;
-  const pass = document.getElementById("pass_su").value;
-  const username = document.getElementById("username_su").value;
-  // validate
-  if (!email || !pass || !username) {
-    alert("Can dien du cac truong");
-    return;
-  } else {
-    //them du lieu vao local storage
-    const new_user_list = JSON.parse(localStorage.getItem("user_list"));
-    new_user_list.push({ username: username, email: email, pass: pass });
-    localStorage.setItem("user_list", JSON.stringify(new_user_list));
-    // tao current user
-    localStorage.setItem(
-      "current_user",
-      JSON.stringify({ username: username, email: email, pass: pass })
-    );
-    alert("Dang nhap thanh cong");
-    set_text_for_nav(username);
-    wrapper.classList.remove("active-popup");
-    return;
-  }
-}
-function login(e) {
-  // chan luong mac dinh
-  e.preventDefault();
-  const email = document.getElementById("email_li").value;
-  const pass = document.getElementById("pass_li").value;
-  // validate
-  if (!email || !pass) {
-    alert("Can dien du cac truong");
-    return;
-  } else {
-    // check du lieu
-    const new_user_list = JSON.parse(localStorage.getItem("user_list"));
-    for (let index = 0; index < new_user_list.length; index++) {
-      if (email == new_user_list[index].email) {
-        // truong hop sai mat khau
-        if (pass != new_user_list[index].pass) {
-          alert("Sai thong tin dang nhap");
-          return;
-        } else {
-          // dang nhap dung
-          localStorage.setItem(
-            "current_user",
-            JSON.stringify(new_user_list[index])
-          );
-          alert("Dang nhap thanh cong");
-          const username = JSON.parse(
-            localStorage.getItem("current_user")
-          ).username;
-          set_text_for_nav(username);
-          wrapper.classList.remove("active-popup");
-          return;
-        }
+    // Kiểm tra các trường đã được điền đầy đủ và checkbox đã được chọn
+    if (username && email && password && terms) {
+      // Lưu thông tin vào Local Storage
+      localStorage.setItem("username", username);
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+
+      alert("Đăng ký thành công!");
+    } else {
+      alert("Vui lòng điền đầy đủ thông tin và chấp nhận điều khoản.");
+    }
+  });
+
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Ngăn chặn form gửi đi
+
+    // Lấy giá trị từ các trường nhập liệu
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const remember = document.getElementById("remember").checked;
+
+    // Lấy thông tin từ Local Storage
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
+    const storedUsername = localStorage.getItem("username");
+    // Lưu tên đăng nhập vào Local Storage để sử dụng sau
+    localStorage.setItem('loggedInUser', storedUsername);
+
+    // Kiểm tra thông tin đăng nhập
+    if (email === storedEmail && password === storedPassword) {
+      if (remember) {
+        localStorage.setItem("remember", "true");
+      } else {
+        localStorage.removeItem("remember");
       }
+      alert("Đăng nhập thành công!");
+      // Điều hướng đến trang khác
+      window.location.href = "../index.html";
+    } else {
+      alert("Email hoặc mật khẩu không đúng.");
     }
+  });
 
-    // truong hop chua sign up
-    if (!JSON.parse(localStorage.getItem("current_user"))) {
-      alert("Tai khoan chua co, ban can signup");
-    }
+// Tự động điền email và mật khẩu nếu đã chọn "Ghi nhớ đăng nhập"
+window.onload = function () {
+  if (localStorage.getItem("remember") === "true") {
+    document.getElementById("email").value = localStorage.getItem("email");
+    document.getElementById("password").value =
+      localStorage.getItem("password");
+    document.getElementById("remember").checked = true;
   }
-}
-
-// bat su kien cho nut login
-document.getElementById("login_btn").addEventListener("click", (e) => {
-  login(e);
-});
-
-// bat su kien cho nut signup
-document.getElementById("signup_btn").addEventListener("click", (e) => {
-  signup(e);
-});
-
-// Chinh gia tri cua nut bam login tren nav
-function set_text_for_nav(text) {
-  username_nav.innerHTML = text;
-}
-// kiem tra da login chua (ngay khi mo web)
-if (!JSON.parse(localStorage.getItem("current_user"))) {
-  set_text_for_nav("Login");
-} else {
-  const username = JSON.parse(localStorage.getItem("current_user")).username;
-  set_text_for_nav(username);
-}
+};

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nephelometer_Register</title>
+    <title>Register</title>
     
     <script
       src="https://kit.fontawesome.com/a64131ba24.js"
@@ -14,13 +14,13 @@
   </head>
   <body>
     <nav>
-      <div class="nav__bar">
-        <div class="logo nav__logo">
-          <a href="../index.html">nephelometer</a>
+      <div class="navbar">
+        <div class="logo">
+          <a href="../index.html" class="logo">nephelometer</a>
         </div>
-        <div class="nav__action__btn btn">
+        <div class="register">
           <button class="btn__user">
-            <span><i class="fa-solid fa-user"></i></span>Register
+           <span><i class="fa-solid fa-user"></i></span> Register
           </button>
         </div>
       </div>
@@ -31,19 +31,19 @@
         <span class="icon-close"><i class="fa-solid fa-xmark"></i></span>
         <div class="form-box login">
           <h2>Login</h2>
-          <form>
+          <form id="loginForm">
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-envelope"></i></span>
-              <input type="email" required id="email_li" />
+              <input type="email" id="email" name="email" required/>
               <label>Email</label>
             </div>
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" required id="pass_li" />
+              <input type="password" id="password" name="password" required />
               <label>Password</label>
             </div>
             <div class="remember-forgot">
-              <label><input type="checkbox" /> Remember me</label>
+              <label><input type="checkbox"  id="remember" name="remember" /> Remember me</label>
               <a href="#">Forgot password ?</a>
             </div>
             <button type="submit" class="btn" id="login_btn">Login</button>
@@ -59,25 +59,25 @@
 
         <div class="form-box register">
           <h2>Registration</h2>
-          <form>
+          <form id="registerForm">
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-user"></i></span>
-              <input type="text" required id="username_su" />
+              <input type="text" id="username" name="username" required/>
               <label>Username</label>
             </div>
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-envelope"></i></span>
-              <input type="email" required id="email_su" />
+              <input type="email" id="email" name="email" required/>
               <label>Email</label>
             </div>
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" required id="pass_su" />
+              <input type="password" id="password" name="password" required/>
               <label>Password</label>
             </div>
             <div class="remember-forgot">
               <label
-                ><input type="checkbox" /> I accepted the terms &
+                ><input type="checkbox" id="terms" name="terms" required/> I accepted the terms &
                 conditions</label
               >
             </div>
