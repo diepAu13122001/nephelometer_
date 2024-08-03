@@ -23,7 +23,6 @@ document
       localStorage.setItem("username", username);
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
-
       alert("Đăng ký thành công!");
     } else {
       alert("Vui lòng điền đầy đủ thông tin và chấp nhận điều khoản.");

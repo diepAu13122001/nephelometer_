@@ -6,7 +6,7 @@ window.onload = function() {
   // Lấy tên đăng nhập từ Local Storage
   const loggedInUser = localStorage.getItem('loggedInUser');
   if (loggedInUser) {
-      document.getElementById('accountButton').textContent = loggedInUser;
+      document.getElementById('accountButton').innerHTML = `<span><i class="fa-solid fa-user"></i></span>` + loggedInUser;
   }
 };
 
