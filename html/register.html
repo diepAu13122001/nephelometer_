@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register|nephelometer</title>
-    
+
     <script
       src="https://kit.fontawesome.com/a64131ba24.js"
       crossorigin="anonymous"
@@ -20,7 +20,7 @@
         </div>
         <div class="register">
           <button class="btn__user">
-           <span><i class="fa-solid fa-user"></i></span> Register
+            <span><i class="fa-solid fa-user"></i></span> Register
           </button>
         </div>
       </div>
@@ -34,16 +34,23 @@
           <form id="loginForm">
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-envelope"></i></span>
-              <input type="email" id="email" name="email"/>
-              <label>Email</label>
+              <input type="email" id="email_login" name="email_login" />
+              <label for="email_login">Email</label>
             </div>
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" id="password" name="password" />
-              <label>Password</label>
+              <input
+                type="password"
+                id="password_login"
+                name="password_login"
+              />
+              <label for="password_login">Password</label>
             </div>
             <div class="remember-forgot">
-              <label><input type="checkbox"  id="remember" name="remember" /> Remember me</label>
+              <label
+                ><input type="checkbox" id="remember" name="remember" />
+                Remember me</label
+              >
               <a href="#">Forgot password ?</a>
             </div>
             <button type="submit" class="btn" id="login_btn">Login</button>
@@ -62,23 +69,27 @@
           <form id="registerForm">
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-user"></i></span>
-              <input type="text" id="username" name="username"/>
+              <input type="text" id="username" name="username" />
               <label>Username</label>
             </div>
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-envelope"></i></span>
-              <input type="email" id="email" name="email"/>
-              <label>Email</label>
+              <input type="email" id="email_register" name="email_register" />
+              <label for="email_register">Email</label>
             </div>
             <div class="input-box">
               <span class="icon"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" id="password" name="password"/>
-              <label>Password</label>
+              <input
+                type="password"
+                id="password_register"
+                name="password_register"
+              />
+              <label for="password_register">Password</label>
             </div>
             <div class="remember-forgot">
               <label
-                ><input type="checkbox" id="terms" name="terms"/> I accepted the terms &
-                conditions</label
+                ><input type="checkbox" id="terms" name="terms" /> I accepted
+                the terms & conditions</label
               >
             </div>
             <button type="submit" class="btn" id="signup_btn">Register</button>
@@ -94,6 +105,7 @@
       </div>
     </div>
 
+    <script src="../js/nav.js"></script>
     <script src="../js/wrapper.js"></script>
     <script src="../js/registation.js"></script>
   </body>

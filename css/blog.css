@@ -282,6 +282,7 @@ header {
   color: #fff;
   padding: 0.55rem 1.2rem;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 .blog-text a:hover {
   color: var(--secondary-color);

@@ -11,7 +11,7 @@
     ></script>
 
     <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="../css/postDetail.css">
+    <link rel="stylesheet" href="../css/postDetail.css" />
   </head>
   <body>
     <header class="header" id="home">
@@ -25,22 +25,18 @@
             <li><a href="./blog.html">Blog</a></li>
             <li><a href="../index.html#footer">About Us</a></li>
             <li id="account-open-nav">
-              <a href="./register.html"
-                ><button id="accountButton" class="nav__action btn">
-                  <span><i class="fa-solid fa-user"></i></span> Account
-                </button></a
-              >
+              <button id="accountButton_1" class="nav__action btn">
+                <span><i class="fa-solid fa-user"></i></span> Account
+              </button>
             </li>
           </ul>
           <div class="nav__menu__btn" id="menu-btn">
             <i class="fa-solid fa-bars"></i>
           </div>
           <div class="nav__action__btn">
-            <a href="./register.html"
-              ><button id="accountButton" class="nav__action btn">
-                <span><i class="fa-solid fa-user"></i></span> Account
-              </button></a
-            >
+            <button id="accountButton_2" class="nav__action btn">
+              <span><i class="fa-solid fa-user"></i></span> Account
+            </button>
           </div>
         </div>
       </nav>
@@ -50,12 +46,12 @@
       -->
     <div class="blog-card spring-fever">
       <div class="title-content">
-        <h3>SPRING FEVER</h3>
+        <h3 id="post_title">SPRING FEVER</h3>
         <hr />
-        <div class="intro">Yllamco laboris nisi ut aliquip ex ea commodo.</div>
+        <!-- <div class="intro">Yllamco laboris nisi ut aliquip ex ea commodo.</div> -->
       </div>
       <!-- /.title-content -->
-      <div class="card-info">
+      <div class="card-info" id="post_content">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
       </div>
@@ -69,111 +65,7 @@
       </div>
       <!-- /.utility-info -->
       <a href="#" class="btn-close">X</a>
-      <div class="comment-card">
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
-        <!-- /.comment-post -->
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
-        <!-- /.comment-post -->
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
-        <!-- /.comment-post -->
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
-        <!-- /.comment-post -->
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
-        <!-- /.comment-post -->
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
-        <!-- /.comment-post -->
-        <div class="comment-post">
-          <div class="avatar">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/avatar-sm.png"
-              alt="John Doe"
-            />
-          </div>
-          <div class="comment">
-            <h4>John Doe</h4>
-            You probably haven't heard of them post-ironic master cleanse, blog
-            Pinterest PBR asymmetrical polaroid. Street art plaid Bushwick
-          </div>
-          <div style="clear: both"></div>
-        </div>
+      <div class="comment-card" id="comment_list">
         <!-- /.comment-post -->
       </div>
       <!-- /.comment-card -->
@@ -218,6 +110,13 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../js/nav.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/postDetail.js"></script>
   </body>
