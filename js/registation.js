@@ -6,29 +6,34 @@ const user_List = [
   },
 ];
 
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Ngăn chặn form gửi đi
+if (!JSON.parse(localStorage.getItem("user_list"))) {
+  localStorage.setItem("user_list", JSON.stringify(user_list));
+}
 
-    // Lấy giá trị từ các trường nhập liệu
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const terms = document.getElementById("terms").checked;
-
-    // Kiểm tra các trường đã được điền đầy đủ và checkbox đã được chọn
-    if (username && email && password && terms) {
-      // Lưu thông tin vào Local Storage
-      localStorage.setItem("username", username);
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-      alert("Đăng ký thành công!");
-    } else {
-      alert("Vui lòng điền đầy đủ thông tin và chấp nhận điều khoản.");
-    }
-  });
-
+function signup(e) {
+  // chan luong mac dinh
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const pass = document.getElementById("pass").value;
+  const username = document.getElementById("username").value;
+  const terms = document.getElementById("terms")
+  // validate
+  if (!email || !pass || !username || !terms) {
+    alert("Vui lòng điền đầy đủ thông tin và đồng ý với điều khoản.");
+    return;
+  } else {
+    const new_user_list = JSON.parse(localStorage.getItem("user_list"));
+    new_user_list.push({ username: username, email: email, pass: pass });
+    localStorage.setItem("user_list", JSON.stringify(new_user_list));
+    localStorage.setItem(
+      "current_user",
+      JSON.stringify({ username: username, email: email, pass: pass })
+      ,location.href = "../index.html"
+    );
+    alert("Đăng ký thành công!");
+    return;
+  }
+}
 document
   .getElementById("loginForm")
   .addEventListener("submit", function (event) {
@@ -44,7 +49,7 @@ document
     const storedPassword = localStorage.getItem("password");
     const storedUsername = localStorage.getItem("username");
     // Lưu tên đăng nhập vào Local Storage để sử dụng sau
-    localStorage.setItem('loggedInUser', storedUsername);
+    localStorage.setItem("loggedInUser", storedUsername);
 
     // Kiểm tra thông tin đăng nhập
     if (email === storedEmail && password === storedPassword) {
