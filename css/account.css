@@ -133,11 +133,13 @@ body {
 }
 
 .account_analysis #add_btn button {
-    background-color: transparent;
-    font-size: 25px;
-     i {
-        color: white;
-     }
+  background-color: transparent;
+  font-size: 25px;
+  outline: none;
+  border: none;
+  i {
+    color: white;
+  }
 }
 
 @media (max-width: 991.5px) {
