@@ -2,14 +2,6 @@ const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
 
-window.onload = function() {
-  // Lấy tên đăng nhập từ Local Storage
-  const loggedInUser = localStorage.getItem('loggedInUser');
-  if (loggedInUser) {
-      document.getElementById('accountButton').innerHTML = `<span><i class="fa-solid fa-user"></i></span>` + loggedInUser;
-  }
-};
-
 menuBtn.addEventListener("click", (e) => {
   const isOpen = navLinks.classList.contains("open");
   menuBtnIcon.setAttribute(
