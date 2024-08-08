@@ -225,6 +225,10 @@ nav {
   }
 }
 
+.hide {
+  display: none;
+}
+
 .nav__links a {
   font-weight: 500;
   color: var(--white);
@@ -349,27 +353,39 @@ nav {
 
 .feedback {
   background-color: var(--primary-color);
-  padding-bottom: 5px;
+  padding: 0 40px;
+}
+
+#feedback .section__container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.form-feedback {
+  width: 450px;
 }
 
 .form-feedback label {
+  margin-top: 10px;
   color: var(--white);
 }
 
-.form-feedback textarea {
+.form-feedback textarea,
+.form-feedback input {
   background-color: var(--primary-color);
   color: var(--white);
-  min-height: 75px;
+  min-height: 30px;
   max-height: 250px;
 }
 
 .submit_btn {
+  margin-top: 10px;
   right: 0;
   border: #cbd5e1 solid 1px;
   max-width: max-content;
   border-radius: 5px;
-  position: absolute;
-  align-items: center center;
 }
 
 .submit_btn button:hover {
@@ -426,6 +442,10 @@ nav {
 }
 
 @media (width > 768px) {
+  #account-open-nav {
+    display: none;
+  }
+
   .nav__logo {
     flex: 1;
   }
@@ -472,6 +492,10 @@ nav {
 
   .about__content {
     margin-left: 6rem;
+  }
+
+  .form-feedback {
+    width: 800px;
   }
 
   .footer__container {

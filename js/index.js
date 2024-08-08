@@ -1,12 +1,14 @@
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
+const account_open_nav = document.querySelector("#account-open-nav");
 
-window.onload = function() {
+window.onload = function () {
   // Lấy tên đăng nhập từ Local Storage
-  const loggedInUser = localStorage.getItem('loggedInUser');
+  const loggedInUser = localStorage.getItem("loggedInUser");
   if (loggedInUser) {
-      document.getElementById('accountButton').innerHTML = `<span><i class="fa-solid fa-user"></i></span>` + loggedInUser;
+    document.getElementById("accountButton").innerHTML =
+      `<span><i class="fa-solid fa-user"></i></span>` + loggedInUser;
   }
 };
 
@@ -17,6 +19,7 @@ menuBtn.addEventListener("click", (e) => {
     isOpen ? "fa-solid fa-bars" : "fa-solid fa-xmark"
   );
   if (isOpen) {
+    account_open_nav.classList.remove("hide");
     navLinks.classList.add("close");
     navLinks.addEventListener(
       "animationend",
@@ -83,4 +86,3 @@ ScrollReveal().reveal(".about__content .about__btn .rollup_btn", {
   ...scrollRevealOption,
   delay: 1500,
 });
-
