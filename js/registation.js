@@ -1,4 +1,4 @@
-const user_List = [
+const user_list = [
   {
     username: "admin",
     email: "admin@gmail.com",
@@ -6,58 +6,92 @@ const user_List = [
   },
 ];
 
-if (!JSON.parse(localStorage.getItem("user_list"))) {
-  localStorage.setItem("user_list", JSON.stringify(user_list));
-}
+// if (!JSON.parse(localStorage.getItem("user_list"))) {
+//   localStorage.setItem("user_list", JSON.stringify(user_list));
+// }
 
 function registerUser() {
-  var username = document.getElementById('username').value;
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  var terms = document.getElementById('terms').checked;
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email_register").value;
+  const password = document.getElementById("password_register").value;
+  const terms = document.getElementById("terms").checked;
+  const newUser = {
+    username,
+    email,
+    password,
+    terms,
+  };
+  const user_local_list = JSON.parse(localStorage.getItem("user_list")) || [];
 
+  // kiem tra ngoai le ------------------------
+  // kiem tra du lieu nhap vao
   if (username === "" || email === "" || password === "" || !terms) {
-      alert("Vui lòng điền đầy đủ thông tin và đồng ý với điều khoản.");
-      return false;
+    alert("Vui lòng điền đầy đủ thông tin và đồng ý với điều khoản.");
+    return;
+  }
+  // kiem tra co bi trung user cu khong
+  const duplicate_users = user_local_list.filter(function (u) {
+    return username === u.username || email === u.email;
+  });
+  if (duplicate_users.length) {
+    alert(
+      "Tai khoan da ton tai tren he thong, vui long chuyen den trang dang nhap"
+    );
+    return;
   }
 
-  // Lưu dữ liệu vào Local Storage
-  localStorage.setItem('username', username);
-  localStorage.setItem('email', email);
-  localStorage.setItem('password', password);
-
+  // Lưu dữ liệu vào Local Storage -----------------------
+  user_local_list.push(newUser);
+  // set lai list cho local storage
+  localStorage.setItem("user_list", JSON.stringify(user_local_list));
   alert("Đăng ký thành công!");
-
-  return false;
+  // chuyen sang dang nhap
+  location.href = "./register.html";
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  if (localStorage.getItem('remember') === 'true') {
-      document.getElementById('login-email').value = localStorage.getItem('email');
-      document.getElementById('login-password').value = localStorage.getItem('password');
-      document.getElementById('remember').checked = true;
+document.addEventListener("DOMContentLoaded", (event) => {
+  if (localStorage.getItem("remember") === "true") {
+    document.getElementById("email_login").value =
+      localStorage.getItem("email");
+    document.getElementById("password_login").value =
+      localStorage.getItem("password");
+    document.getElementById("remember").checked = true;
   }
 });
 
 function loginUser() {
-  var email = document.getElementById('login-email').value;
-  var password = document.getElementById('login-password').value;
-  var remember = document.getElementById('remember').checked;
+  const email = document.getElementById("email_login").value;
+  const password = document.getElementById("password_login").value;
+  const remember = document.getElementById("remember").checked;
+  const user_local_list = JSON.parse(localStorage.getItem("user_list")) || [];
 
-  var storedEmail = localStorage.getItem('email');
-  var storedPassword = localStorage.getItem('password');
-
-  if (email === storedEmail && password === storedPassword) {
-      if (remember) {
-          localStorage.setItem('remember', 'true');
-      } else {
-          localStorage.removeItem('remember');
-      }
-      alert("Đăng nhập thành công!");
-      window.location.href = "../index.html"; // Chuyển hướng đến trang chào mừng
-      return false;
+  const user_found = user_local_list.filter(function (u) {
+    return password === u.password || email === u.email;
+  });
+  if (user_found.length) {
+    if (remember) {
+      localStorage.setItem("remember", "true");
+    } else {
+      localStorage.removeItem("remember");
+    }
+    // luu nguoi dung hien tai
+    localStorage.setItem("current_user", JSON.stringify(user_found[0]));
+    alert("Đăng nhập thành công!");
+    window.location.href = "../index.html"; // Chuyển hướng đến trang chào mừng
   } else {
-      alert("Email hoặc mật khẩu không đúng.");
-      return false;
+    alert("Email hoặc mật khẩu không đúng.");
+    return;
   }
 }
+
+// bat su kien cho button login ------------------------------------------------
+document.getElementById("login_btn").onclick = function (event) {
+  event.preventDefault();
+  loginUser();
+};
+
+// bat su kien cho button register ------------------------------------------------
+document.getElementById("signup_btn").onclick = function (event) {
+  event.preventDefault();
+  registerUser();
+};

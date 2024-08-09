@@ -28,6 +28,7 @@
         </button>
       </a>
     </div>
+
     <header class="header" id="home">
       <nav>
         <div class="nav__bar">
@@ -38,16 +39,19 @@
             <li><a href="#more">Explore</a></li>
             <li><a href="./html/blog.html">Blog</a></li>
             <li><a href="#footer">About Us</a></li>
+            <li id="account-open-nav">
+              <button id="accountButton_1" class="nav__action btn">
+                <span><i class="fa-solid fa-user"></i></span> Account
+              </button>
+            </li>
           </ul>
           <div class="nav__menu__btn" id="menu-btn">
             <i class="fa-solid fa-bars"></i>
           </div>
           <div class="nav__action__btn">
-            <a href="./html/register.html"
-              ><button id="accountButton" class="nav__action btn" >
-                <span><i class="fa-solid fa-user"></i></span> Account
-              </button></a
-            >
+            <button id="accountButton_2" class="nav__action btn">
+              <span><i class="fa-solid fa-user"></i></span> Account
+            </button>
           </div>
         </div>
       </nav>
@@ -69,7 +73,6 @@
         </div>
       </div>
     </header>
-    
 
     <section class="about" id="more">
       <div class="section__container about__container">
@@ -138,17 +141,25 @@
     </section>
 
     <section class="feedback" id="feedback">
-      <div class="form-feedback">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Client's feedback
-        </label>
-        <textarea
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          rows="3"
-        ></textarea>
+      <div class="section__container">
+        <h2 class="section__header">Feedback</h2>
+        <div class="form-feedback">
+          <label for="userEmailFeedback" class="form-label"
+            >Client's email
+          </label>
+          <input type="email" class="form-control" id="userEmailFeedback" />
+
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Client's feedback
+          </label>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="submit_btn"><button class="btn">Submit</button></div>
       </div>
-      <div class="submit_btn"><button class="btn">Submit</button></div>
     </section>
 
     <section class="footer" id="footer">
@@ -158,9 +169,7 @@
             <div class="logo footer__logo">
               <a href="#">nephelometer</a>
             </div>
-            <p>
-              Get out there & discover your next destination!
-            </p>
+            <p>Get out there & discover your next destination!</p>
           </div>
           <div class="footer__col">
             <h4>More on The Blog</h4>
@@ -186,7 +195,10 @@
         </div>
       </footer>
     </section>
+
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../js/nav.js"></script>
+
     <script src="./js/index.js"></script>
   </body>
 </html>

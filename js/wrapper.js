@@ -16,12 +16,13 @@ btnPopup.addEventListener("click", () => {
   // check xem login hay logout
   if (!JSON.parse(localStorage.getItem("current_user"))) {
     wrapper.classList.add("active-popup");
-  } else {
-    // xoa du lieu current_user
-    localStorage.removeItem("current_user");
-    username_nav.innerHTML = "Login";
-    alert("Logout successful");
   }
+  //else {
+  //   // xoa du lieu current_user
+  //   localStorage.removeItem("current_user");
+  //   username_nav.innerHTML = "Login";
+  //   alert("Logout successful");
+  // }
 });
 
 iconClose.addEventListener("click", () => {
