@@ -1,4 +1,4 @@
-// random post + toi thieu la 3 post
+// random post + toi thieu la 3 post => 23
 const random_post_list = Math.floor(Math.random() * 20) + 3;
 
 function renderPost(container, post) {
