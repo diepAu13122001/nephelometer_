@@ -1,51 +1,15 @@
+import Footer from "../component/footer.js";
+import Nav from "../component/nav.js";
+
 class Register {
-  constructor() {}
+  constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.nav = new Nav();
+    this.footer = new Footer();
+  }
 
   render(main_container) {
-    // Create the main navigation element
-    const nav = document.createElement("nav");
-
-    // Create the navbar container
-    const navbar = document.createElement("div");
-    navbar.classList.add("navbar");
-
-    // Create the logo container
-    const logoDiv = document.createElement("div");
-    logoDiv.classList.add("logo");
-
-    const logoLink = document.createElement("a");
-    logoLink.href = "../index.html";
-    logoLink.classList.add("logo");
-    logoLink.textContent = "nephelometer";
-
-    logoDiv.appendChild(logoLink);
-
-    // Create the register container
-    const registerDiv = document.createElement("div");
-    registerDiv.classList.add("register");
-
-    const registerButton = document.createElement("button");
-    registerButton.classList.add("btn__user");
-
-    const iconSpan = document.createElement("span");
-    const iconElement = document.createElement("i");
-    iconElement.classList.add("fa-solid", "fa-user");
-
-    iconSpan.appendChild(iconElement);
-    registerButton.appendChild(iconSpan);
-    registerButton.appendChild(document.createTextNode(" Register"));
-
-    registerDiv.appendChild(registerButton);
-
-    // Append logo and register elements to the navbar
-    navbar.appendChild(logoDiv);
-    navbar.appendChild(registerDiv);
-
-    // Append the navbar to the nav element
-    nav.appendChild(navbar);
-
-    // Append the nav element to the document body
-    document.body.appendChild(nav);
+    this.nav.render(main_container);
 
     // Create wrapper container
     const wrapperP = document.createElement("div");
@@ -244,7 +208,7 @@ class Register {
     registerButton1.classList.add("btn");
     registerButton1.id = "signup_btn";
     registerButton1.textContent = "Register";
-    registerForm.appendChild(registerButton);
+    registerForm.appendChild(registerButton1);
 
     // Register to Login link
     const registerToLogin = document.createElement("div");
@@ -264,7 +228,9 @@ class Register {
     wrapperP.appendChild(wrapper);
 
     // Append wrapper-p to the document body
-    document.body.appendChild(wrapperP);
+    main_container.appendChild(wrapperP);
+
+    this.footer.render(main_container);
   }
 
 }

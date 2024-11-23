@@ -3,7 +3,7 @@ class Nav {
         
     }
 
-    render() {
+    render(main_container) {
         // Create the header element
     const header = document.createElement("header");
     header.classList.add("header");
@@ -95,70 +95,8 @@ class Nav {
     nav.appendChild(navBar);
     header.appendChild(nav);
 
-    // Create the section__container for the header content
-    const sectionContainer = document.createElement("div");
-    sectionContainer.classList.add("section__container", "header__container");
-    sectionContainer.id = "welcome";
-
-    // Create the header content div
-    const headerContentDiv = document.createElement("div");
-    headerContentDiv.classList.add("header__content");
-    const subHeader = document.createElement("h3");
-    subHeader.classList.add("section__subheader");
-    subHeader.textContent = "A VACATION GUIDE";
-    const mainHeader = document.createElement("h1");
-    mainHeader.classList.add("section__header");
-    mainHeader.textContent = "Be Prepared For Beyond!";
-
-    // Create the scroll button div
-    const scrollBtnDiv = document.createElement("div");
-    scrollBtnDiv.classList.add("scroll__btn");
-    const scrollLink = document.createElement("a");
-    scrollLink.href = "#blog";
-    scrollLink.textContent = "Scroll down";
-    const scrollIcon = document.createElement("span");
-    const downArrowIcon = document.createElement("i");
-    downArrowIcon.classList.add("fa-solid", "fa-arrow-down");
-    scrollIcon.appendChild(downArrowIcon);
-    scrollLink.appendChild(scrollIcon);
-    scrollBtnDiv.appendChild(scrollLink);
-
-    // Append the content to headerContentDiv
-    headerContentDiv.appendChild(subHeader);
-    headerContentDiv.appendChild(mainHeader);
-    headerContentDiv.appendChild(scrollBtnDiv);
-
-    // Create the header social div
-    const headerSocialsDiv = document.createElement("div");
-    headerSocialsDiv.classList.add("header__socials");
-    const followSpan = document.createElement("span");
-    followSpan.textContent = "Follow us";
-    const instagramLink = document.createElement("a");
-    instagramLink.href = "#";
-    const instagramIcon = document.createElement("i");
-    instagramIcon.classList.add("fa-brands", "fa-instagram");
-    instagramLink.appendChild(instagramIcon);
-
-    const twitterLink = document.createElement("a");
-    twitterLink.href = "#";
-    const twitterIcon = document.createElement("i");
-    twitterIcon.classList.add("fa-brands", "fa-twitter");
-    twitterLink.appendChild(twitterIcon);
-
-    // Append social links to headerSocialsDiv
-    headerSocialsDiv.appendChild(followSpan);
-    headerSocialsDiv.appendChild(instagramLink);
-    headerSocialsDiv.appendChild(twitterLink);
-
-    // Append content and socials to sectionContainer
-    sectionContainer.appendChild(headerContentDiv);
-    sectionContainer.appendChild(headerSocialsDiv);
-
-    // Append section container to header
-    header.appendChild(sectionContainer);
-
     // Append header to the body or desired parent element
-    document.body.appendChild(header);
+    main_container.appendChild(header);
     }
 }
 

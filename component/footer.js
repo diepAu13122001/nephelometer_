@@ -1,9 +1,9 @@
-class Nav {
+class Footer {
     constructor() {
 
     }
 
-    render() {
+    render(main_container) {
         // Create the footer section
     const footerSection = document.createElement("section");
     footerSection.classList.add("footer");
@@ -21,14 +21,14 @@ class Nav {
     const footerCol1 = document.createElement("div");
     footerCol1.classList.add("footer__col");
     const logo1 = document.createElement("div");
-    logo.classList.add("logo", "footer__logo");
+    logo1.classList.add("logo", "footer__logo");
     const logoLink1 = document.createElement("a");
     logoLink1.href = "#";
     logoLink1.textContent = "nephelometer";
-    logo1.appendChild(logoLink);
+    logo1.appendChild(logoLink1);
     const footerText = document.createElement("p");
     footerText.textContent = "Get out there & discover your next destination!";
-    footerCol1.appendChild(logo);
+    footerCol1.appendChild(logo1);
     footerCol1.appendChild(footerText);
 
     // Create the second footer column
@@ -102,6 +102,8 @@ class Nav {
     footerSection.appendChild(footer);
 
     // Append the footer section to the body or specific parent element
-    document.body.appendChild(footerSection);
+    main_container.appendChild(footerSection);
     }
 }
+
+export default Footer;

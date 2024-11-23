@@ -1,11 +1,19 @@
-import Account from "./account";
-import Blog from "./blog";
-import Register from "./register";
+import Account from "./account.js";
+import Blog from "./blog.js";
+import Register from "./register.js";
+import Nav from "../component/nav.js";
+import Footer from "../component/footer.js";
 
 class Home {
-  constructor() {}
+  constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.nav = new Nav();
+    this.footer = new Footer();
+  }
 
   render(main_container) {
+    this.nav.render(main_container);
+
     // Create the scrollup button container
     const scrollUpBtnDiv = document.createElement("div");
     scrollUpBtnDiv.classList.add("scrollup__btn");
@@ -164,140 +172,20 @@ class Home {
     content3Div.appendChild(btn3Div);
 
     // Append all the created elements to the sectionContainer
-    sectionContainer.appendChild(image1Div);
-    sectionContainer.appendChild(content1Div);
-    sectionContainer.appendChild(image2Div);
-    sectionContainer.appendChild(content2Div);
-    sectionContainer.appendChild(image3Div);
-    sectionContainer.appendChild(content3Div);
+    sectionContainer1.appendChild(image1Div);
+    sectionContainer1.appendChild(content1Div);
+    sectionContainer1.appendChild(image2Div);
+    sectionContainer1.appendChild(content2Div);
+    sectionContainer1.appendChild(image3Div);
+    sectionContainer1.appendChild(content3Div);
 
     // Append the sectionContainer to the section
-    section.appendChild(sectionContainer);
+    section.appendChild(sectionContainer1);
 
     // Append the section to the body or the desired parent element
-    document.body.appendChild(section);
+    main_container.appendChild(section);
 
-    // Create the section element
-    const section1 = document.createElement("section");
-    section1.classList.add("footer");
-    section1.id = "footer";
-
-    // Create the footer element
-    const footer = document.createElement("footer");
-    footer.classList.add("footer");
-
-    // Create the section__container div
-    const sectionContainer11 = document.createElement("div");
-    sectionContainer11.classList.add("section__container", "footer__container");
-
-    // Create the first footer column
-    const footerCol1 = document.createElement("div");
-    footerCol1.classList.add("footer__col");
-
-    // Create the logo inside footer column
-    const footerLogo = document.createElement("div");
-    footerLogo.classList.add("logo", "footer__logo");
-    const logoLink1 = document.createElement("a");
-    logoLink1.href = "#";
-    logoLink1.textContent = "nephelometer";
-    footerLogo.appendChild(logoLink);
-    footerCol1.appendChild(footerLogo);
-
-    // Create the paragraph inside footer column
-    const para11 = document.createElement("p");
-    para11.textContent = "Get out there & discover your next destination!";
-    footerCol1.appendChild(para1);
-
-    // Append the first column to the section container
-    sectionContainer.appendChild(footerCol1);
-
-    // Create the second footer column
-    const footerCol2 = document.createElement("div");
-    footerCol2.classList.add("footer__col");
-
-    // Create the h4 header inside the second column
-    const h4_1 = document.createElement("h4");
-    h4_1.textContent = "More on The Blog";
-    footerCol2.appendChild(h4_1);
-
-    // Create the unordered list inside the second column
-    const ul1 = document.createElement("ul");
-    ul1.classList.add("footer__links");
-
-    // Create the list items and links inside the second column
-    const listItems1 = [
-      { text: "About The Creator", link: "#" },
-      { text: "Contributors & Writers", link: "#" },
-      { text: "Write For Us", link: "#" },
-      { text: "Contact Us", link: "#" },
-      { text: "Privacy Policy", link: "#" },
-    ];
-
-    // Manually add each list item to the unordered list
-    listItems1.forEach((item) => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = item.link;
-      a.textContent = item.text;
-      li.appendChild(a);
-      ul1.appendChild(li);
-    });
-
-    footerCol2.appendChild(ul1);
-
-    // Append the second column to the section container
-    sectionContainer.appendChild(footerCol2);
-
-    // Create the third footer column
-    const footerCol3 = document.createElement("div");
-    footerCol3.classList.add("footer__col");
-
-    // Create the h4 header inside the third column
-    const h4_2 = document.createElement("h4");
-    h4_2.textContent = "More on nephelometer";
-    footerCol3.appendChild(h4_2);
-
-    // Create the unordered list inside the third column
-    const ul2 = document.createElement("ul");
-    ul2.classList.add("footer__links");
-
-    // Create the list items and links inside the third column
-    const listItems2 = [
-      { text: "The Team", link: "#" },
-      { text: "Jobs", link: "#" },
-      { text: "Press", link: "#" },
-    ];
-
-    // Manually add each list item to the unordered list
-    listItems2.forEach((item) => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = item.link;
-      a.textContent = item.text;
-      li.appendChild(a);
-      ul2.appendChild(li);
-    });
-
-    footerCol3.appendChild(ul2);
-
-    // Append the third column to the section container
-    sectionContainer.appendChild(footerCol3);
-
-    // Create the footer bar
-    const footerBar = document.createElement("div");
-    footerBar.classList.add("footer__bar");
-    footerBar.textContent =
-      "Copyright © 2024 Le Minh Tien. All rights reserved.";
-
-    // Append the section container and footer bar to the footer
-    footer.appendChild(sectionContainer);
-    footer.appendChild(footerBar);
-
-    // Append the footer to the section
-    section.appendChild(footer);
-
-    // Append the section to the body or the desired parent element
-    document.body.appendChild(section);
+    this.footer.render(main_container);
   }
 
   goto_account() {
@@ -314,7 +202,7 @@ class Home {
     const register = new Register;
     app.renderComponent(register);
   }
-
+  
 }
 
 export default Home;

@@ -1,7 +1,17 @@
+import Footer from "../component/footer.js";
+import Nav from "../component/nav.js";
+import postDetail from "./postDetail.js";
+
 class Account {
-  constructor() {}
+  constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    this.nav = new Nav();
+    this.footer = new Footer();
+  }
 
   render(main_container) {
+    this.nav.render(main_container);
+
     // Create the main container
     const container = document.createElement("div");
     container.classList.add("container");
@@ -112,7 +122,9 @@ class Account {
     container.appendChild(card);
 
     // Add the container to the DOM (e.g., append to body or a specific parent element)
-    document.body.appendChild(container);
+    main_container.appendChild(container);
+
+    this.footer.render(main_container);
   }
 
   goto_createpost() {
