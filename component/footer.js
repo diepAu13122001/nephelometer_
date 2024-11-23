@@ -1,7 +1,5 @@
 class Footer {
-    constructor() {
-
-    }
+    constructor() {}
 
     render(main_container) {
         // Create the footer section

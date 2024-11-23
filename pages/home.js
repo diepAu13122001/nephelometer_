@@ -42,7 +42,74 @@ class Home {
     // Append the scrollup button container to the body or desired parent element
     document.body.appendChild(scrollUpBtnDiv);
 
-    
+    // Create main container div
+    const container = document.createElement("div");
+    container.className = "section__container header__container";
+    container.id = "welcome";
+
+    // Create header content div
+    const headerContent = document.createElement("div");
+    headerContent.className = "header__content";
+
+    // Create and append h3 element
+    const subHeader = document.createElement("h3");
+    subHeader.className = "section__subheader";
+    subHeader.textContent = "A VACATION GUIDE";
+    headerContent.appendChild(subHeader);
+
+    // Create and append h1 element
+    const header = document.createElement("h1");
+    header.className = "section__header";
+    header.textContent = "Be Prepared For Beyond!";
+    headerContent.appendChild(header);
+
+    // Create and append scroll button div
+    const scrollBtn = document.createElement("div");
+    scrollBtn.className = "scroll__btn";
+    const scrollLink = document.createElement("a");
+    scrollLink.href = "#blog";
+    scrollLink.textContent = "Scroll down";
+    const arrowSpan = document.createElement("span");
+    const arrowIcon = document.createElement("i");
+    arrowIcon.className = "fa-solid fa-arrow-down";
+    arrowSpan.appendChild(arrowIcon);
+    scrollLink.appendChild(arrowSpan);
+    scrollBtn.appendChild(scrollLink);
+    headerContent.appendChild(scrollBtn);
+
+    // Append header content to main container
+    container.appendChild(headerContent);
+
+    // Create header socials div
+    const headerSocials = document.createElement("div");
+    headerSocials.className = "header__socials";
+
+    // Create and append "Follow us" span
+    const followSpan = document.createElement("span");
+    followSpan.textContent = "Follow us";
+    headerSocials.appendChild(followSpan);
+
+    // Create and append Instagram link
+    const instagramLink = document.createElement("a");
+    instagramLink.href = "#";
+    const instagramIcon = document.createElement("i");
+    instagramIcon.className = "fa-brands fa-instagram";
+    instagramLink.appendChild(instagramIcon);
+    headerSocials.appendChild(instagramLink);
+
+    // Create and append Twitter link
+    const twitterLink = document.createElement("a");
+    twitterLink.href = "#";
+    const twitterIcon = document.createElement("i");
+    twitterIcon.className = "fa-brands fa-twitter";
+    twitterLink.appendChild(twitterIcon);
+    headerSocials.appendChild(twitterLink);
+
+    // Append header socials to main container
+    container.appendChild(headerSocials);
+
+    // Append the entire structure to the body or another element
+    document.body.appendChild(container);
 
     // Create the section element
     const section = document.createElement("section");
@@ -189,20 +256,19 @@ class Home {
   }
 
   goto_account() {
-    const account = new Account;
+    const account = new Account();
     app.renderComponent(account);
   }
 
   goto_blog() {
-    const blog = new Blog;
+    const blog = new Blog();
     app.renderComponent(blog);
   }
 
   goto_registration() {
-    const register = new Register;
+    const register = new Register();
     app.renderComponent(register);
   }
-  
 }
 
 export default Home;

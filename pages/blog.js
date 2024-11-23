@@ -11,7 +11,7 @@ class Blog {
 
   render(main_container) {
     this.nav.render(main_container);
-
+    
     // Create the banner section
     const banner = document.createElement("div");
     banner.classList.add("banner");

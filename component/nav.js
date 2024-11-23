@@ -1,14 +1,7 @@
 class Nav {
-    constructor(parameters) {
-        
-    }
+    constructor() {}
 
     render(main_container) {
-        // Create the header element
-    const header = document.createElement("header");
-    header.classList.add("header");
-    header.id = "home";
-
     // Create the nav element
     const nav = document.createElement("nav");
 
@@ -93,10 +86,9 @@ class Nav {
 
     // Append the nav to the header
     nav.appendChild(navBar);
-    header.appendChild(nav);
 
     // Append header to the body or desired parent element
-    main_container.appendChild(header);
+    main_container.appendChild(nav);
     }
 }
 
