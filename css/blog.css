@@ -155,12 +155,14 @@ header {
 /* design */
 .title {
   text-align: center;
+  width: 100%;
 }
 .title h2 {
   font-family: var(--Playfair);
   font-size: 2.4rem;
   color: var(--secondary-color);
   top: 0;
+  width: 100%;
 }
 .title p {
   text-transform: uppercase;

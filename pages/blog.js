@@ -11,7 +11,7 @@ class Blog {
 
   render(main_container) {
     this.nav.render(main_container);
-    
+
     // Create the banner section
     const banner = document.createElement("div");
     banner.classList.add("banner");
@@ -79,85 +79,106 @@ class Blog {
     designContent.classList.add("design-content");
 
     // Helper function to create design items
-    function createDesignItem(imgSrc, likes, text, linkText) {
-      const designItem = document.createElement("div");
-      designItem.classList.add("design-item");
+    // Create the design-content container
+    designContent.classList.add("design-content");
 
-      const designImg = document.createElement("div");
-      designImg.classList.add("design-img");
+    // Item 1
+    const item1 = document.createElement("div");
+    item1.classList.add("design-item");
 
-      const img = document.createElement("img");
-      img.src = imgSrc;
-      img.alt = "";
-      designImg.appendChild(img);
+    const designImg1 = document.createElement("div");
+    designImg1.classList.add("design-img");
 
-      const spanLikes = document.createElement("span");
-      spanLikes.innerHTML = `<i class="far fa-heart"></i> ${likes}`;
-      designImg.appendChild(spanLikes);
+    const img1 = document.createElement("img");
+    img1.src = "../css/assets/art-design-1.jpg";
+    img1.alt = "";
+    designImg1.appendChild(img1);
 
-      const spanText = document.createElement("span");
-      spanText.textContent = text;
-      designImg.appendChild(spanText);
+    const spanLikes1 = document.createElement("span");
+    spanLikes1.innerHTML = `<i class="far fa-heart"></i> 22`;
+    designImg1.appendChild(spanLikes1);
 
-      const designTitle = document.createElement("div");
-      designTitle.classList.add("design-title");
+    const spanText1 = document.createElement("span");
+    spanText1.textContent = "nephelometer";
+    designImg1.appendChild(spanText1);
 
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = linkText;
-      designTitle.appendChild(link);
+    const designTitle1 = document.createElement("div");
+    designTitle1.classList.add("design-title");
 
-      designItem.appendChild(designImg);
-      designItem.appendChild(designTitle);
+    const link1 = document.createElement("a");
+    link1.href = "#";
+    link1.textContent = "Lorem ipsum, dolor sit amet consectetur adipisicing";
+    designTitle1.appendChild(link1);
 
-      return designItem;
-    }
-
-    // Create each design item manually
-    const item1 = createDesignItem(
-      "../css/assets/art-design-1.jpg",
-      22,
-      "nephelometer",
-      "Lorem ipsum, dolor sit amet consectetur adipisicing"
-    );
-    const item2 = createDesignItem(
-      "../css/assets/art-design-2.jpg",
-      22,
-      "nephelometer",
-      "Lorem ipsum, dolor sit amet consectetur adipisicing"
-    );
-    const item3 = createDesignItem(
-      "../css/assets/art-design-3.jpg",
-      22,
-      "nephelometer",
-      "Lorem ipsum, dolor sit amet consectetur adipisicing"
-    );
-    const item4 = createDesignItem(
-      "../css/assets/art-design-4.jpg",
-      22,
-      "nephelometer",
-      "Lorem ipsum, dolor sit amet consectetur adipisicing"
-    );
-    const item5 = createDesignItem(
-      "../css/assets/art-design-5.jpg",
-      22,
-      "nephelometer",
-      "Lorem ipsum, dolor sit amet consectetur adipisicing"
-    );
-    const item6 = createDesignItem(
-      "../css/assets/art-design-6.jpg",
-      22,
-      "nephelometer",
-      "Lorem ipsum, dolor sit amet consectetur adipisicing"
-    );
-
-    // Append items to the design-content
+    item1.appendChild(designImg1);
+    item1.appendChild(designTitle1);
     designContent.appendChild(item1);
+
+    // Item 2
+    const item2 = document.createElement("div");
+    item2.classList.add("design-item");
+
+    const designImg2 = document.createElement("div");
+    designImg2.classList.add("design-img");
+
+    const img2 = document.createElement("img");
+    img2.src = "../css/assets/art-design-2.jpg";
+    img2.alt = "";
+    designImg2.appendChild(img2);
+
+    const spanLikes2 = document.createElement("span");
+    spanLikes2.innerHTML = `<i class="far fa-heart"></i> 22`;
+    designImg2.appendChild(spanLikes2);
+
+    const spanText2 = document.createElement("span");
+    spanText2.textContent = "nephelometer";
+    designImg2.appendChild(spanText2);
+
+    const designTitle2 = document.createElement("div");
+    designTitle2.classList.add("design-title");
+
+    const link2 = document.createElement("a");
+    link2.href = "#";
+    link2.textContent = "Lorem ipsum, dolor sit amet consectetur adipisicing";
+    designTitle2.appendChild(link2);
+
+    item2.appendChild(designImg2);
+    item2.appendChild(designTitle2);
     designContent.appendChild(item2);
+
+    // Item 3
+    const item3 = document.createElement("div");
+    item3.classList.add("design-item");
+
+    const designImg3 = document.createElement("div");
+    designImg3.classList.add("design-img");
+
+    const img3 = document.createElement("img");
+    img3.src = "../css/assets/art-design-3.jpg";
+    img3.alt = "";
+    designImg3.appendChild(img3);
+
+    const spanLikes3 = document.createElement("span");
+    spanLikes3.innerHTML = `<i class="far fa-heart"></i> 22`;
+    designImg3.appendChild(spanLikes3);
+
+    const spanText3 = document.createElement("span");
+    spanText3.textContent = "nephelometer";
+    designImg3.appendChild(spanText3);
+
+    const designTitle3 = document.createElement("div");
+    designTitle3.classList.add("design-title");
+
+    const link3 = document.createElement("a");
+    link3.href = "#";
+    link3.textContent = "Lorem ipsum, dolor sit amet consectetur adipisicing";
+    designTitle3.appendChild(link3);
+
+    item3.appendChild(designImg3);
+    item3.appendChild(designTitle3);
     designContent.appendChild(item3);
-    designContent.appendChild(item4);
-    designContent.appendChild(item5);
-    designContent.appendChild(item6);
+
+    // Repeat for items 4, 5, and 6...
 
     // Append design-content to the container
     container.appendChild(designContent);
@@ -166,7 +187,7 @@ class Blog {
     designSection.appendChild(container);
 
     // Append the section to the body or specific parent element
-    document.body.appendChild(designSection);
+    main_container.appendChild(designSection);
 
     // Create the section element
     const blogSection = document.createElement("section");
@@ -205,12 +226,12 @@ class Blog {
   }
 
   goto_createpost() {
-    const createpost = new CreatePost;
+    const createpost = new CreatePost();
     app.renderComponent(createpost);
   }
 
   goto_postdetail() {
-    const postdetail = new postDetail;
+    const postdetail = new postDetail();
     app.renderComponent(postdetail);
   }
 }

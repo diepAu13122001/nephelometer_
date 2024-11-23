@@ -33,6 +33,6 @@ const account = new Account();
 //     app.renderComponent(register);
 //   }
 
-app.renderComponent(home)
+app.renderComponent(blog)
 
 export default app;
