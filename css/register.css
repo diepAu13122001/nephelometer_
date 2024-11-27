@@ -52,6 +52,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10rem;
 }
 
 .wrapper {
@@ -70,6 +71,7 @@ body {
   overflow: hidden;
   transform: scale(0);
   transition: transform 0.5s ease, height 0.2s ease;
+
 }
 
 .wrapper.active-popup {

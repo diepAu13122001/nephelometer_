@@ -20,7 +20,7 @@ class Home {
 
     // Create the anchor element
     const anchor = document.createElement("a");
-    anchor.href = "#";
+    anchor.addEventListener("click", this.scrollto_header.bind(this));
 
     // Create the button element
     const button = document.createElement("button");
@@ -67,7 +67,8 @@ class Home {
     const scrollBtn = document.createElement("div");
     scrollBtn.className = "scroll__btn";
     const scrollLink = document.createElement("a");
-    scrollLink.href = "#blog";
+    scrollLink.href = "#";
+    scrollLink.addEventListener("click", this.scrollto_explore.bind(this));
     scrollLink.textContent = "Scroll down";
     const arrowSpan = document.createElement("span");
     const arrowIcon = document.createElement("i");
@@ -268,6 +269,30 @@ class Home {
   goto_registration() {
     const register = new Register();
     app.renderComponent(register);
+  }
+
+  scrollto_explore() {
+    const target_section = document.getElementById("more");
+    target_section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+
+  scrollto_footer() {
+    const target_section = document.getElementById("footer");
+    target_section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+
+  scrollto_header() {
+    const target_section = document.getElementById("app");
+    target_section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
   }
 }
 

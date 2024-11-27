@@ -112,7 +112,7 @@ class postDetail {
   }
 
   goto_account() {
-    const account = new Account;
+    const account = new Account();
     app.renderComponent(account);
   }
 }

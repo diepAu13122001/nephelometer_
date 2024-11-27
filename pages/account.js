@@ -1,6 +1,13 @@
+import app from "../app.js";
 import Footer from "../component/footer.js";
 import Nav from "../component/nav.js";
+import { firebaseApp } from "../data/firebase-app.js";
+import Home from "./home.js";
 import postDetail from "./postDetail.js";
+import {
+  getAuth,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 class Account {
   constructor() {
@@ -121,6 +128,12 @@ class Account {
     // Append the card to the container
     container.appendChild(card);
 
+    const logoutbtn = document.createElement("button");
+    logoutbtn.innerHTML = "Log Out";
+    logoutbtn.id = "logout_btn";
+    logoutbtn.addEventListener("click", this.logout.bind(this));
+    main_container.appendChild(logoutbtn);
+
     // Add the container to the DOM (e.g., append to body or a specific parent element)
     main_container.appendChild(container);
 
@@ -128,8 +141,26 @@ class Account {
   }
 
   goto_createpost() {
-    const createpost = new CreatePost;
-    app.renderComponent(createpost);
+    // const createpost = new CreatePost;
+    // app.renderComponent(createpost);
+  }
+
+  goto_home() {
+    const home = new Home();
+    app.renderComponent(home);
+  }
+
+  logout() {
+    const auth = getAuth(firebaseApp);
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        this.goto_home();
+      })
+      .catch((error) => {
+        // An error happened.
+        alert(error)
+      });
   }
 }
 

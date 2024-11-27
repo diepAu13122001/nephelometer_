@@ -1,5 +1,14 @@
+import app from "../app.js";
 import Footer from "../component/footer.js";
 import Nav from "../component/nav.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import { firebaseApp } from "../data/firebase-app.js";
+import Home from "./home.js";
 
 class Register {
   constructor() {
@@ -101,6 +110,7 @@ class Register {
     loginButton.classList.add("btn");
     loginButton.id = "login_btn";
     loginButton.textContent = "Login";
+    loginButton.addEventListener("click", this.login.bind(this));
     loginForm.appendChild(loginButton);
 
     // Login to Register link
@@ -139,7 +149,7 @@ class Register {
     usernameBox.appendChild(usernameIcon);
     const usernameInput = document.createElement("input");
     usernameInput.type = "text";
-    usernameInput.id = "username";
+    usernameInput.id = "username_register";
     usernameInput.name = "username";
     usernameBox.appendChild(usernameInput);
     const usernameLabel = document.createElement("label");
@@ -208,6 +218,7 @@ class Register {
     registerButton1.classList.add("btn");
     registerButton1.id = "signup_btn";
     registerButton1.textContent = "Register";
+    registerButton1.addEventListener("click", this.register.bind(this));
     registerForm.appendChild(registerButton1);
 
     // Register to Login link
@@ -231,8 +242,116 @@ class Register {
     main_container.appendChild(wrapperP);
 
     this.footer.render(main_container);
+    this.wrapper_form();
   }
 
+  wrapper_form() {
+    const wrapper = document.querySelector(".wrapper");
+    const loginLink = document.querySelector(".login-link");
+    const registerLink = document.querySelector(".register-link");
+    const iconClose = document.querySelector(".icon-close");
+
+    registerLink.addEventListener("click", () => {
+      wrapper.classList.add("active");
+    });
+
+    loginLink.addEventListener("click", () => {
+      wrapper.classList.remove("active");
+    });
+
+    iconClose.addEventListener("click", () => {
+      wrapper.classList.remove("active-popup");
+    });
+  }
+
+  login(event) {
+    event.preventDefault();
+    const email = document.getElementById("email_login").value.trim();
+    const password = document.getElementById("password_login").value.trim();
+    // khong nhap du du lieu
+    if (!(email && password)) alert("Vui long nhap du thong tin");
+    else {
+      // co du du lieu -> check auth tren firebase
+      const auth = getAuth(firebaseApp);
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // luu user hien tai vao local storage
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          // chuyen trang home
+          this.goto_home();
+          
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+  }
+
+  register(event) {
+    event.preventDefault();
+    // get data from input form
+    const email = document.getElementById("email_register").value.trim();
+    const password = document.getElementById("password_register").value.trim();
+    const username = document.getElementById("username_register").value.trim();
+    const terms = document.getElementById("terms").checked;
+    // kiem tra thong tin nhap vao
+    if (this.validate_registerform(email, username, password, terms)) {
+      const auth = getAuth(firebaseApp);
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // luu them username
+          updateProfile(user, {
+            displayName: username,
+            photoURL:
+              "https://i.pinimg.com/236x/a3/9b/7b/a39b7b7bd7012a4f6fd2030c50e91d0e.jpg",
+          })
+            .then(() => {
+              console.log("User profile updated");
+            })
+            .catch((error) => {
+              alert("Update profile error:", error);
+            });
+          console.log(user);
+
+          alert("Dang ky thanh cong, vui long chuyen sang login")
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+  }
+
+  goto_home() {
+    const home = new Home();
+    app.renderComponent(home);
+  }
+
+  validate_registerform(email, username, password, terms) {
+    if (!(email && password && username)) {
+      // khong nhap du du lieu
+      alert("Vui long nhap du thong tin");
+      return false;
+    }
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      alert("Email khong dung dinh dang!");
+      return false;
+    }
+    if (password.length < 6) {
+      alert("Mat khau phai tu 6 chu so tro len!");
+      return false;
+    }
+    if (!terms) {
+      alert("Dong y dieu khoan va dich vu");
+      return false;
+    }
+    return true;
+  }
 }
 
 export default Register;
