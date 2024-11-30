@@ -1,3 +1,4 @@
+import { database } from "../data/firebase-app";
 
 
 class createPostPopup {
@@ -156,19 +157,26 @@ class createPostPopup {
       }
     }
   
+    uploadimage_file() {
+      this.$imageid = "";
+
+    }
+
   async createpost() {
     // get input data
       const image = document.getElementById("post_image");
-      const title = document.getElementById("post_title").value.trim();
-      const caption = document.getElementById("post_caption").value.trim();
+      const title = document.getElementById("post_title").value;
+      const caption = document.getElementById("post_caption").value;
+
 
     try {
-      const docRef = await addDoc(collection(db, "users"), {
-        first: "Ada",
-        last: "Lovelace",
-        born: 1815,
+      const docRef = await addDoc(collection(database, "users"), {
+        title: title,
+        caption: caption,
+        image: this.$imageid,
       });
       console.log("Document written with ID: ", docRef.id);
+      alert("Create post successfully");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
