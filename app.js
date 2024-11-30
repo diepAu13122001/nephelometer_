@@ -1,5 +1,6 @@
 import Nav from "./component/nav.js";
 import Footer from "./component/footer.js";
+import createPostPopup from "./component/createPost.js";
 import Home from "./pages/home.js";
 import Register from "./pages/register.js";
 import postDetail from "./pages/postDetail.js";

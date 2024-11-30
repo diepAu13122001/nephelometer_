@@ -3,6 +3,7 @@ import Blog from "./blog.js";
 import Register from "./register.js";
 import Nav from "../component/nav.js";
 import Footer from "../component/footer.js";
+import createPostPopup from "../component/createPost.js";
 
 class Home {
   constructor() {

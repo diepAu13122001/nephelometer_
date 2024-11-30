@@ -4,6 +4,8 @@ import Nav from "../component/nav.js";
 import { firebaseApp } from "../data/firebase-app.js";
 import Home from "./home.js";
 import postDetail from "./postDetail.js";
+import createPostPopup from "../component/createPost.js";
+
 import {
   getAuth,
   signOut,
@@ -18,6 +20,8 @@ class Account {
 
   render(main_container) {
     this.nav.render(main_container);
+
+
 
     // Create the main container
     const container = document.createElement("div");
@@ -141,7 +145,7 @@ class Account {
   }
 
   goto_createpost() {
-    // const createpost = new CreatePost;
+    // const createpost = new createPost;
     // app.renderComponent(createpost);
   }
 

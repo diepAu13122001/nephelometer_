@@ -83,6 +83,7 @@ nav {
   padding: 1rem;
   z-index: 9;
   right: 0;
+  background-color: var(--primary-color);
 }
 
 .nav__bar {
