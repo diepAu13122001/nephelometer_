@@ -6,6 +6,7 @@ import Home from "./home.js";
 import postDetail from "./postDetail.js";
 import createPostPopup from "../component/createPost.js";
 
+
 import {
   getAuth,
   signOut,
@@ -16,12 +17,12 @@ class Account {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.nav = new Nav();
     this.footer = new Footer();
+    this.createpost = new createPostPopup();
   }
 
   render(main_container) {
     this.nav.render(main_container);
-
-
+    this.createpost.render(main_container);
 
     // Create the main container
     const container = document.createElement("div");
@@ -138,16 +139,19 @@ class Account {
     logoutbtn.addEventListener("click", this.logout.bind(this));
     main_container.appendChild(logoutbtn);
 
+    const createpostbtn = document.createElement("button");
+    createpostbtn.innerHTML = "Create new post";
+    createpostbtn.id = "createpost";
+    main_container.appendChild(createpostbtn);
+    // createpostbtn.addEventListener("click", this.createpost.open(main_container));
+
     // Add the container to the DOM (e.g., append to body or a specific parent element)
     main_container.appendChild(container);
 
     this.footer.render(main_container);
   }
 
-  goto_createpost() {
-    // const createpost = new createPost;
-    // app.renderComponent(createpost);
-  }
+  
 
   goto_home() {
     const home = new Home();
@@ -163,7 +167,7 @@ class Account {
       })
       .catch((error) => {
         // An error happened.
-        alert(error)
+        alert(error);
       });
   }
 }

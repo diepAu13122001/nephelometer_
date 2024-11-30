@@ -155,14 +155,23 @@ class createPostPopup {
         this.popupElement.style.display = "none";
       }
     }
+  
+  async createpost() {
+    // get input data
+      const image = document.getElementById("post_image");
+      const title = document.getElementById("post_title").value.trim();
+      const caption = document.getElementById("post_caption").value.trim();
+
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        first: "Ada",
+        last: "Lovelace",
+        born: 1815,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   }
-  
-//   // Usage example
-//   const CreatePostPopup = new createPostPopup();
-  
-//   // Open popup when needed
-//   document.getElementById("openPopupButton").addEventListener("click", () => {
-// CreatePostPopup.open(document.body);
-//   });
-  
+}
 export default createPostPopup;
