@@ -1,6 +1,11 @@
+import {
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 import Footer from "../component/footer.js";
 import Nav from "../component/nav.js";
 import postDetail from "./postDetail.js";
+import { database } from "../data/firebase-app.js";
 
 class Blog {
   constructor() {
@@ -233,6 +238,50 @@ class Blog {
   goto_postdetail() {
     const postdetail = new postDetail();
     app.renderComponent(postdetail);
+  }
+
+  async get_posts() {
+    const querySnapshot = await getDocs(collection(database, "posts"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
+  }
+
+  async render_post(postData) {
+    const item3 = document.createElement("div");
+    item3.classList.add("design-item");
+
+    const designImg3 = document.createElement("div");
+    designImg3.classList.add("design-img");
+
+    const img3 = document.createElement("img");
+    img3.src = postData.data().image;
+    img3.alt = postData.data().caption;
+    designImg3.appendChild(img3);
+
+    const spanLikes3 = document.createElement("span");
+    spanLikes3.innerHTML = `<i class="far fa-heart"></i> 22`;
+    designImg3.appendChild(spanLikes3);
+
+    // get username by id
+    const docRef = doc(database, "cities", postData.id);
+    const docSnap = await getDoc(docRef);
+
+    const spanText3 = document.createElement("span");
+    spanText3.textContent = docSnap.data().displayName;
+    designImg3.appendChild(spanText3);
+
+    const designTitle3 = document.createElement("div");
+    designTitle3.classList.add("design-title");
+
+    const link3 = document.createElement("a");
+    link3.href = "#";
+    link3.textContent = postData.data().caption;
+    designTitle3.appendChild(link3);
+
+    item3.appendChild(designImg3);
+    item3.appendChild(designTitle3);
+    return item3;
   }
 }
 

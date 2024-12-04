@@ -17,12 +17,11 @@ class Account {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.nav = new Nav();
     this.footer = new Footer();
-    this.createpost = new createPostPopup();
+    this.popupElement = new createPostPopup();
   }
 
   render(main_container) {
     this.nav.render(main_container);
-    this.createpost.render(main_container);
 
     // Create the main container
     const container = document.createElement("div");
@@ -133,16 +132,26 @@ class Account {
     // Append the card to the container
     container.appendChild(card);
 
+    
+
     const logoutbtn = document.createElement("button");
     logoutbtn.innerHTML = "Log Out";
     logoutbtn.id = "logout_btn";
+    logoutbtn.classList.add("btn");
     logoutbtn.addEventListener("click", this.logout.bind(this));
-    main_container.appendChild(logoutbtn);
-
+    
     const createpostbtn = document.createElement("button");
     createpostbtn.innerHTML = "Create new post";
-    createpostbtn.id = "createpost";
-    main_container.appendChild(createpostbtn);
+    createpostbtn.id = "createpost_btn";
+    createpostbtn.classList.add("btn");
+    createpostbtn.addEventListener("click", this.open.bind(this, main_container));
+
+    const btngroup = document.createElement("div");
+    btngroup.id = "group_btn";
+    btngroup.appendChild(logoutbtn);
+    btngroup.appendChild(createpostbtn);
+    main_container.appendChild(btngroup);
+    
     // createpostbtn.addEventListener("click", this.createpost.open(main_container));
 
     // Add the container to the DOM (e.g., append to body or a specific parent element)
@@ -151,7 +160,9 @@ class Account {
     this.footer.render(main_container);
   }
 
-  
+  open(main_container) {
+    this.popupElement.render(main_container);
+  }
 
   goto_home() {
     const home = new Home();

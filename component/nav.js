@@ -197,7 +197,9 @@ class Nav {
       // The user's ID, unique to the Firebase project. Do NOT use
       // this value to authenticate with your backend server, if
       // you have one. Use User.getToken() instead.
-      const uid = user.uid;
+      // const uid = user.uid;
+      console.log(user.displayName);
+      
     } else {
       document
         .getElementById("accountButton_2")

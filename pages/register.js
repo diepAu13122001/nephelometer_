@@ -1,3 +1,9 @@
+import { database, storage, firebaseApp } from "../data/firebase-app.js";
+import {
+  setDoc,
+  doc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 import app from "../app.js";
 import Footer from "../component/footer.js";
 import Nav from "../component/nav.js";
@@ -7,7 +13,6 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-import { firebaseApp } from "../data/firebase-app.js";
 import Home from "./home.js";
 
 class Register {
@@ -281,7 +286,6 @@ class Register {
           localStorage.setItem("currentUser", JSON.stringify(user));
           // chuyen trang home
           this.goto_home();
-          
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -290,7 +294,7 @@ class Register {
     }
   }
 
-  register(event) {
+  async register(event) {
     event.preventDefault();
     // get data from input form
     const email = document.getElementById("email_register").value.trim();
@@ -301,7 +305,7 @@ class Register {
     if (this.validate_registerform(email, username, password, terms)) {
       const auth = getAuth(firebaseApp);
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           // Signed up
           const user = userCredential.user;
           // luu them username
@@ -317,8 +321,12 @@ class Register {
               alert("Update profile error:", error);
             });
           console.log(user);
-
-          alert("Dang ky thanh cong, vui long chuyen sang login")
+          const docRef = doc(database, "users", user.uid)
+          await setDoc(docRef, {
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          },{ merge: true });
+          alert("Dang ky thanh cong, vui long chuyen sang login");
         })
         .catch((error) => {
           const errorMessage = error.message;

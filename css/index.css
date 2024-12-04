@@ -32,9 +32,9 @@
 }
 
 .section__container {
-  max-width: var(--max-width);
+  width: 100%;
   margin: auto;
-  padding: 5rem 1rem;
+  padding: 5rem 7rem;
   background-color: var(--primary-color);
 }
 
@@ -51,7 +51,7 @@
 .section__subheader::before {
   position: absolute;
   content: "";
-  top: 50%;
+  top: 85%;
   left: 0;
   transform: translateY(-50%);
   height: 2px;
@@ -154,6 +154,7 @@ body {
   transform: translateX(calc(-50% + 1rem)) rotate(90deg);
   display: none;
   z-index: 1000;
+  padding-bottom: 7rem;
 }
 
 .header__socials a {

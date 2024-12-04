@@ -34,6 +34,6 @@ const account = new Account();
 //     app.renderComponent(register);
 //   }
 
-app.renderComponent(account)
+app.renderComponent(blog)
 
 export default app;

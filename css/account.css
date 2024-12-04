@@ -18,6 +18,27 @@ body {
   padding-bottom: 10rem;
 }
 
+#group_btn {
+  padding-top: 10px;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn {
+  width: fit-content;
+  height: 45px;
+  background: var(--primary-color);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: var(--white);
+  font-weight: 500;
+}
+
 /* .container .row .col-lg-4 {
     display: flex;
     justify-content: center;
@@ -139,6 +160,8 @@ body {
     color: white;
   }
 }
+
+
 
 @media (max-width: 991.5px) {
   .container {
