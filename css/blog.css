@@ -30,16 +30,13 @@ img {
 /* header */
 header {
   min-height: 100vh;
-  background: radial-gradient(
-    rgba(255, 255, 255, 0),
-    var(--primary-color)
-  ),
+  background: radial-gradient(rgba(255, 255, 255, 0), var(--primary-color)),
     url(../css/assets/header-1.jpg) center/cover no-repeat fixed;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
 }
-.navbar {
+/* .navbar {
   background: transparent;
   padding: 1.2rem;
 }
@@ -94,20 +91,27 @@ header {
 }
 .navbar-nav a:hover {
   opacity: 0.7;
-}
+} */
 .banner {
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+
+.banner > .container {
   flex: 1;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #fff;
+  flex-flow: row wrap;
 }
 .banner-title {
   font-size: 3rem;
   font-family: var(--Playfair);
   line-height: 1.2;
   position: relative;
+  width: 100%;
 }
 .banner-title span {
   font-family: var(--Playfair);
@@ -120,6 +124,7 @@ header {
   font-family: var(--Roboto);
   font-weight: 300;
   word-spacing: 2px;
+  width: 100%;
 }
 .banner form {
   background: #fff;
@@ -231,6 +236,11 @@ header {
   background: var(--primary-color);
   padding: 4.5rem 0;
 }
+
+.blog > .container {
+  display: block;
+}
+
 .blog-content {
   margin: 2rem 0;
 }
@@ -252,7 +262,6 @@ header {
   padding: 0 1rem;
 }
 .blog-text span {
-  
   font-weight: 300;
   display: block;
   padding-bottom: 0.5rem;

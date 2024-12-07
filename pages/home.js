@@ -7,7 +7,6 @@ import createPostPopup from "../component/createPost.js";
 
 class Home {
   constructor() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.nav = new Nav();
     this.footer = new Footer();
   }

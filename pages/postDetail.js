@@ -2,20 +2,33 @@ import Footer from "../component/footer.js";
 import Nav from "../component/nav.js";
 import Account from "./account.js";
 
-class postDetail {
+export default class PostDetail {
   constructor() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.nav = new Nav();
     this.footer = new Footer();
+    this.currentPost = JSON.parse(localStorage.getItem("currentPost"));
+    // set title name for web page
+    document.title = "Post Detail";
   }
 
   render(main_container) {
+    // neu khong co post thi quay lai trang home
+    if (!this.currentPost) {
+      location.reload();
+      return;
+    }
+
     this.nav.render(main_container);
 
-    
     // Create the main blog-card div
     const blogCard = document.createElement("div");
     blogCard.classList.add("blog-card", "spring-fever");
+    // Define the dynamic image URL
+    const imageUrl = this.currentPost.image;
+
+    blogCard.style.backgroundImage = `url('${imageUrl}')`;
+    blogCard.style.backgroundRepeat = "no-repeat";
+    blogCard.style.backgroundSize = "cover";
 
     // Create the title-content div
     const titleContent = document.createElement("div");
@@ -24,7 +37,7 @@ class postDetail {
     // Create the h3 element for the post title
     const postTitle = document.createElement("h3");
     postTitle.id = "post_title";
-    postTitle.textContent = "SPRING FEVER";
+    postTitle.textContent = this.currentPost.title.toUpperCase();
 
     // Create the hr element for the line
     const hr = document.createElement("hr");
@@ -40,8 +53,7 @@ class postDetail {
     const cardInfo = document.createElement("div");
     cardInfo.classList.add("card-info");
     cardInfo.id = "post_content";
-    cardInfo.textContent =
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.";
+    cardInfo.textContent = this.currentPost.caption;
 
     // Append the cardInfo to the blogCard
     blogCard.appendChild(cardInfo);
@@ -54,19 +66,21 @@ class postDetail {
     const utilityList = document.createElement("ul");
     utilityList.classList.add("utility-list");
 
-    // Create the comments list item
+    // Create the heart list item
     const commentsItem = document.createElement("li");
     commentsItem.classList.add("comments");
     const commentLink = document.createElement("a");
     commentLink.href = "#";
     commentLink.classList.add("comment-link");
-    commentLink.textContent = "12";
+    commentLink.textContent = this.currentPost.heart;
     commentsItem.appendChild(commentLink);
 
-    // Create the date list item
+    // Create the comment list item
     const dateItem = document.createElement("li");
+    const random_comment = Math.floor(Math.random() * 5);
     dateItem.classList.add("date");
-    dateItem.textContent = "03.12.2015";
+    dateItem.textContent = random_comment;
+    // bat su kien cho mo comment box
 
     // Append both list items to the utility-list
     utilityList.appendChild(commentsItem);
@@ -116,5 +130,3 @@ class postDetail {
     app.renderComponent(account);
   }
 }
-
-export default postDetail;

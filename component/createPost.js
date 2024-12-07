@@ -7,7 +7,7 @@ import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 
-class createPostPopup {
+class CreatePostPopup {
   constructor() {
     this.popupElement = null; // To hold the popup DOM element
   }
@@ -199,4 +199,4 @@ class createPostPopup {
     }
   }
 }
-export default createPostPopup;
+export default CreatePostPopup;

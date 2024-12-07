@@ -6,7 +6,6 @@ import Home from "./home.js";
 import postDetail from "./postDetail.js";
 import createPostPopup from "../component/createPost.js";
 
-
 import {
   getAuth,
   signOut,
@@ -14,10 +13,11 @@ import {
 
 class Account {
   constructor() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.nav = new Nav();
     this.footer = new Footer();
     this.popupElement = new createPostPopup();
+    // set title name for web page
+    document.title = "Account";
   }
 
   render(main_container) {
@@ -132,26 +132,27 @@ class Account {
     // Append the card to the container
     container.appendChild(card);
 
-    
-
     const logoutbtn = document.createElement("button");
     logoutbtn.innerHTML = "Log Out";
     logoutbtn.id = "logout_btn";
     logoutbtn.classList.add("btn");
     logoutbtn.addEventListener("click", this.logout.bind(this));
-    
+
     const createpostbtn = document.createElement("button");
     createpostbtn.innerHTML = "Create new post";
     createpostbtn.id = "createpost_btn";
     createpostbtn.classList.add("btn");
-    createpostbtn.addEventListener("click", this.open.bind(this, main_container));
+    createpostbtn.addEventListener(
+      "click",
+      this.open.bind(this, main_container)
+    );
 
     const btngroup = document.createElement("div");
     btngroup.id = "group_btn";
     btngroup.appendChild(logoutbtn);
     btngroup.appendChild(createpostbtn);
     main_container.appendChild(btngroup);
-    
+
     // createpostbtn.addEventListener("click", this.createpost.open(main_container));
 
     // Add the container to the DOM (e.g., append to body or a specific parent element)

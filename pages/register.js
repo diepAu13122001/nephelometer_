@@ -17,9 +17,10 @@ import Home from "./home.js";
 
 class Register {
   constructor() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     this.nav = new Nav();
     this.footer = new Footer();
+    // set title name for web page
+    document.title = "Register";
   }
 
   render(main_container) {
@@ -301,6 +302,7 @@ class Register {
     const password = document.getElementById("password_register").value.trim();
     const username = document.getElementById("username_register").value.trim();
     const terms = document.getElementById("terms").checked;
+    const _this = this;
     // kiem tra thong tin nhap vao
     if (this.validate_registerform(email, username, password, terms)) {
       const auth = getAuth(firebaseApp);
@@ -321,11 +323,15 @@ class Register {
               alert("Update profile error:", error);
             });
           console.log(user);
-          const docRef = doc(database, "users", user.uid)
-          await setDoc(docRef, {
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-          },{ merge: true });
+          const docRef = doc(database, "users", user.uid);
+          await setDoc(
+            docRef,
+            {
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+            },
+            { merge: true }
+          );
           alert("Dang ky thanh cong, vui long chuyen sang login");
         })
         .catch((error) => {

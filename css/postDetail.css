@@ -1,6 +1,3 @@
-
-
-
 /* variables */
 :root {
   --card-width: 350px;
@@ -27,9 +24,7 @@ body {
   height: var(--card-height);
   position: relative;
   top: 50%;
-  left: 50%;
-  
-  margin: auto 0 0 -175px;
+  margin: 100px auto;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
@@ -44,8 +39,7 @@ body {
     z-index: 10;
     top: 0;
     left: 0;
-    transition: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/bg-blog-card.jpg)
-      0.3s cubic-bezier(0.33, 0.66, 0.66, 1);
+    transition: 0.3s cubic-bezier(0.33, 0.66, 0.66, 1);
   }
   .gradient-overlay {
     /* bg-gradient: */
@@ -83,11 +77,11 @@ body {
     }
   }
 }
-.blog-card.spring-fever {
-  background-image: url(https://fastly.picsum.photos/id/182/200/300.jpg?grayscale&hmac=zSesX4S0kW_FXxvoceDR8BV9ZyscpyaVv3nnNczqUdQ);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+/* .blog-card.spring-fever {
+  /* background-image: url(https://fastly.picsum.photos/id/182/200/300.jpg?grayscale&hmac=zSesX4S0kW_FXxvoceDR8BV9ZyscpyaVv3nnNczqUdQ); */
+  /* background-repeat: no-repeat;
+  background-size: cover; 
+} */
 
 .title-content {
   text-align: center;
@@ -159,11 +153,11 @@ hr {
     cursor: pointer;
 
     &.comments {
-      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-chat.svg)
+      background: url(https://img.icons8.com/?size=18&id=T6lIeZJi54CY&format=png&color=FAB005)
         no-repeat 0 0.1em;
     }
     &.date {
-      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-calendar.svg)
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-chat.svg)
         no-repeat 0 0.1em;
     }
 
