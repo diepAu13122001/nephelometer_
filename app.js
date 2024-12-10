@@ -20,7 +20,7 @@ class App {
 }
 
 const app = new App();
-const blog = new PostDetail();
+const blog = new Home();
 
 app.renderComponent(blog);
 
